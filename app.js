@@ -33,7 +33,7 @@
     },
     {
       id: "snacks",
-      label: "Snacks & zoet",
+      label: "Snacks en zoet",
       icon: "🍿",
       description: "Voor trek, filmzin en een beetje verjaardagsmagie.",
       items: [
@@ -96,7 +96,7 @@
     },
     {
       id: "entertainment",
-      label: "Film & fun",
+      label: "Film en entertainment",
       icon: "🎬",
       description: "Bioscoopservice, muziek en gezelligheid op afroep.",
       items: [
@@ -116,7 +116,7 @@
     },
     {
       id: "service",
-      label: "Hulp & service",
+      label: "Hulp en service",
       icon: "🛎️",
       description: "De persoonlijke servicebalie van gastheer Bram.",
       items: [
@@ -134,7 +134,7 @@
     },
     {
       id: "birthday",
-      label: "Verjaardag",
+      label: "Verjaardagsservice",
       icon: "🎂",
       description: "Kleine en grote extra's voor de Birthday Queen & Princess.",
       items: [

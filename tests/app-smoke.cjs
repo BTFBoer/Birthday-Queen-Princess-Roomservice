@@ -47,6 +47,22 @@ const wait = () => new Promise((resolve) => window.setTimeout(resolve, 0));
   assert.equal(document.querySelectorAll("[data-item-id]").length, 12, "avondetencategorie rendert");
   assert.equal(document.querySelector("#checkout-button").disabled, true, "zonder gast en verzoek geblokkeerd");
 
+  const expectedMenus = {
+    dinner: ["Chef’s surprise", "Dinerwensen laten opnemen", "Pizza", "Pasta", "Tosti", "Broodjes", "Patat of snacks", "Snackplank", "Kleine hapjes", "Soep", "Iets vegetarisch", "Anders, beschrijf in notitie"],
+    snacks: ["Popcorn", "Chips", "Chocolade", "Snoep", "Koekjes", "Fruit", "IJs", "Taart of gebak", "Verjaardagsdessert", "Verrassing van Bram"],
+    drinks: ["Water plat", "Water bruisend", "Cola", "Cola zero", "Fanta", "Sprite of 7UP", "Limonade", "Sap", "Thee", "Koffie", "Warme chocolademelk", "Mocktail", "Verrassingsdrankje", "Wijntje", "Ander volwassen drankje"],
+    comfort: ["Extra kussen", "Meerdere extra kussens", "Extra deken", "Bed of bioscoopbank opnieuw opmaken", "Lampen aanpassen", "Kaarsjes of sfeerverlichting", "Airco kouder", "Airco warmer", "Temperatuur controleren", "Raam open of dicht", "Telefoonoplader", "Zakdoekjes", "Handdoek", "Afval of servies ophalen"],
+    entertainment: ["Hulp met televisie", "Hulp met geluid", "Film opzoeken", "Streamingsdienst openen", "Ondertiteling instellen", "Volume aanpassen", "Lichten in bioscoopstand", "Popcornservice", "Filmkeuze door Bram", "Muziek aanzetten", "Gezelschapsspel brengen", "Kom even gezellig naar boven"],
+    service: ["Kun je ergens mee helpen?", "Kom even naar boven", "Kom gezellig erbij zitten", "Iets ophalen", "Iets zoeken", "Opruimservice", "Servies meenemen", "Deur of raam controleren", "Geheim verzoek", "Anders, zie notitie"],
+    birthday: ["Verjaardagsliedje", "Mini-surprise", "Dessert met kaarsje", "Foto-moment", "Cadeautje brengen", "Feestverlichting", "Koninklijke aankondiging", "Champagne-look mocktail", "Verrassing van de gastheer", "Geheime verjaardagsmissie"]
+  };
+  Object.entries(expectedMenus).forEach(([category, expected]) => {
+    click(`[data-category="${category}"]`);
+    const names = [...document.querySelectorAll("#product-grid .product-card__copy strong")].map((element) => element.textContent);
+    assert.deepEqual(names, expected, `volledige categorie ${category}`);
+  });
+  click('[data-category="dinner"]');
+
   click('[data-item-id="chefs-surprise"] [data-action="add"]');
   assert.equal(document.querySelector("#checkout-button").disabled, true, "zonder gast blijft bestellen geblokkeerd");
   assert.equal(document.querySelector("#checkout-count").textContent, "1", "verzoekbadge telt mee");

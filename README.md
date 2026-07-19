@@ -7,7 +7,7 @@ Een mobiele, feestelijke roomservice-PWA voor de gezamenlijke verjaardagsavond v
 ## Wat de app kan
 
 - Kies wie bestelt: Najat, Ameya of Najat & Ameya samen.
-- Stel een bestelling samen uit avondeten, snacks, drinken, comfort, film & entertainment, hulp en verjaardagsservice.
+- Stel een bestelling samen uit avondeten, snacks en zoet, drinken, comfort, film en entertainment, hulp en service en verjaardagsservice.
 - Verhoog of verlaag aantallen; een aantal van nul verwijdert het verzoek.
 - Gebruik exclusieve privacykeuzes en een lokale niet-storen-afteltimer die na verversen doorloopt.
 - Kies een tempo, van rustig aan tot een duidelijk gemarkeerde huiselijke noodbel.

@@ -8,6 +8,8 @@ const { JSDOM } = require("jsdom");
 const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const source = fs.readFileSync(path.join(root, "app.js"), "utf8");
+assert.match(html, /\.\/styles\.css\?v=1\.0\.2/, "stylesheet heeft een cache-buster");
+assert.match(html, /\.\/app\.js\?v=1\.0\.2/, "appscript heeft een cache-buster");
 const dom = new JSDOM(html, {
   url: "https://btfboer.github.io/Birthday-Queen-Princess-Roomservice/",
   runScripts: "outside-only",

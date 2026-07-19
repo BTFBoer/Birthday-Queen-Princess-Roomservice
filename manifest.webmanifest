@@ -1,0 +1,29 @@
+{
+  "id": "./",
+  "name": "Birthday Queen & Princess Roomservice",
+  "short_name": "Zolder Resort",
+  "description": "Privé roomservice voor Najat en Ameya, verzorgd door gastheer Bram.",
+  "lang": "nl-NL",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#160f20",
+  "theme_color": "#160f20",
+  "categories": ["lifestyle", "entertainment"],
+  "icons": [
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

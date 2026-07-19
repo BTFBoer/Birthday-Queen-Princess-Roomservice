@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#160f20">
+  <meta name="description" content="Privé roomservice voor Birthday Queen Najat en Birthday Princess Ameya, met liefde verzorgd door Bram.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Zolder Resort">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Birthday Queen &amp; Princess Roomservice</title>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Ga naar de roomservice</a>
+
+  <header class="hero" aria-label="Zolder Resort Roomservice">
+    <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+    <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+    <nav class="topbar" aria-label="Appfuncties">
+      <a class="brand" href="#main-content" aria-label="Zolder Resort start">
+        <span class="brand__crest" aria-hidden="true">ZR</span>
+        <span><strong>Zolder Resort</strong><small>Birthday Edition</small></span>
+      </a>
+      <div class="topbar__actions">
+        <button class="icon-button" id="history-button" type="button" aria-label="Eerdere bestellingen" title="Eerdere bestellingen">
+          <span aria-hidden="true">↻</span>
+        </button>
+        <button class="icon-button" id="host-button" type="button" aria-label="Gastheer-modus" title="Gastheer-modus">
+          <span aria-hidden="true">♙</span>
+        </button>
+        <button class="icon-button" id="settings-button" type="button" aria-label="Instellingen" title="Instellingen">
+          <span aria-hidden="true">⚙</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hero__content">
+      <p class="eyebrow">Birthday Queen &amp; Princess</p>
+      <h1>Zolder Resort<br><span>Roomservice</span></h1>
+      <p class="hero__intro">Voor Najat en Ameya — jullie privéverblijf voor één heel bijzondere verjaardagsavond.</p>
+      <p class="host-note"><span aria-hidden="true">🛎️</span> Gastheer <strong id="hero-host-name">Bram</strong> staat voor jullie klaar</p>
+      <div class="service-status service-status--open" id="service-status" role="status">
+        <span class="service-status__dot" aria-hidden="true"></span>
+        <span id="service-status-text">Roomservice geopend</span>
+      </div>
+      <p class="service-warning" id="service-warning" hidden></p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section guest-section" aria-labelledby="guest-heading">
+      <div class="section-heading">
+        <div><p class="step">Stap 1</p><h2 id="guest-heading">Wie bestelt er?</h2></div>
+        <p>Kies één gastprofiel</p>
+      </div>
+      <div class="guest-grid" id="guest-options" role="radiogroup" aria-label="Kies wie bestelt">
+        <button class="guest-card" type="button" role="radio" aria-checked="false" data-guest="najat">
+          <span class="guest-card__icon" aria-hidden="true">👑</span>
+          <span><strong>Najat</strong><small>Birthday Queen</small></span>
+          <span class="guest-card__check" aria-hidden="true">✓</span>
+        </button>
+        <button class="guest-card" type="button" role="radio" aria-checked="false" data-guest="ameya">
+          <span class="guest-card__icon" aria-hidden="true">✨</span>
+          <span><strong>Ameya</strong><small>Birthday Princess</small></span>
+          <span class="guest-card__check" aria-hidden="true">✓</span>
+        </button>
+        <button class="guest-card guest-card--together" type="button" role="radio" aria-checked="false" data-guest="together">
+          <span class="guest-card__icon" aria-hidden="true">🫶</span>
+          <span><strong>Najat &amp; Ameya</strong><small>Samen bestellen</small></span>
+          <span class="guest-card__check" aria-hidden="true">✓</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section menu-section" aria-labelledby="menu-heading">
+      <div class="section-heading">
+        <div><p class="step">Stap 2</p><h2 id="menu-heading">Waar mogen we mee helpen?</h2></div>
+        <span class="count-badge" id="menu-count" aria-live="polite">0 gekozen</span>
+      </div>
+      <nav class="category-nav" id="category-nav" aria-label="Roomservicecategorieën"></nav>
+      <div class="category-intro">
+        <span class="category-intro__icon" id="category-icon" aria-hidden="true">🍽️</span>
+        <div><h3 id="category-title">Avondeten</h3><p id="category-description"></p></div>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <section class="section privacy-section" aria-labelledby="privacy-heading">
+      <div class="section-heading">
+        <div><p class="step">Privéverblijf</p><h2 id="privacy-heading">Privacy &amp; niet storen</h2></div>
+        <span aria-hidden="true">🤫</span>
+      </div>
+      <p class="section-copy">Eén keuze tegelijk. Een tijdelijke timer loopt lokaal op dit apparaat door.</p>
+      <div class="choice-list" id="privacy-options" role="radiogroup" aria-label="Privacykeuze"></div>
+      <div class="dnd-timer" id="dnd-timer" aria-live="polite" hidden>
+        <span class="dnd-timer__icon" aria-hidden="true">🌙</span>
+        <div><small>Niet storen actief</small><strong id="dnd-countdown">00:00:00</strong><span id="dnd-until"></span></div>
+      </div>
+    </section>
+
+    <section class="section priority-section" aria-labelledby="priority-heading">
+      <div class="section-heading">
+        <div><p class="step">Stap 3</p><h2 id="priority-heading">Hoe snel?</h2></div>
+        <span aria-hidden="true">⏱️</span>
+      </div>
+      <div class="priority-grid" id="priority-options" role="radiogroup" aria-label="Prioriteit"></div>
+      <p class="emergency-note">De noodbel is bedoeld voor directe huiselijke hulp, niet als vervanging voor medische hulp.</p>
+    </section>
+
+    <section class="section notes-section" aria-labelledby="notes-heading">
+      <div class="section-heading">
+        <div><p class="step">Tot slot</p><h2 id="notes-heading">Bijzonderheden</h2></div>
+        <span id="note-counter">0/500</span>
+      </div>
+      <label class="sr-only" for="order-note">Bijzonderheden bij de bestelling</label>
+      <textarea id="order-note" maxlength="500" rows="5" placeholder="Bijvoorbeeld welke frisdrank, hoeveel kussens, welke film of waarmee jullie hulp nodig hebben…"></textarea>
+    </section>
+
+    <section class="section summary-section" aria-labelledby="summary-heading">
+      <div class="section-heading">
+        <div><p class="step">Overzicht</p><h2 id="summary-heading">Jullie bestelling</h2></div>
+        <span class="order-number" id="draft-order-number">ZR-0000</span>
+      </div>
+      <dl class="summary-meta">
+        <div><dt>Gast(en)</dt><dd id="summary-guests">Nog niet gekozen</dd></div>
+        <div><dt>Prioriteit</dt><dd id="summary-priority">Normaal</dd></div>
+        <div><dt>Moment</dt><dd id="summary-time">—</dd></div>
+      </dl>
+      <div class="empty-state" id="summary-empty">
+        <span aria-hidden="true">🛎️</span>
+        <p>Nog niets gekozen. Bram houdt de bel alvast in de gaten.</p>
+      </div>
+      <ul class="summary-list" id="summary-list"></ul>
+      <div class="summary-note" id="summary-privacy-row" hidden><strong>Privacy</strong><span id="summary-privacy"></span></div>
+      <div class="summary-note" id="summary-note-row" hidden><strong>Notitie</strong><span id="summary-note"></span></div>
+      <button class="text-button text-button--danger" id="reset-order-button" type="button">Wis huidige bestelling</button>
+    </section>
+  </main>
+
+  <div class="checkout-spacer" aria-hidden="true"></div>
+  <aside class="checkout-bar" aria-label="Bestelling afronden">
+    <div class="checkout-bar__inner">
+      <div class="cart-indicator"><span aria-hidden="true">🛎️</span><span><strong id="checkout-count">0</strong><small>verzoeken</small></span></div>
+      <button class="primary-button" id="checkout-button" type="button" disabled>
+        <span>Stuur naar gastheer Bram</span><span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </aside>
+
+  <dialog class="modal" id="confirm-dialog" aria-labelledby="confirm-title">
+    <div class="modal__sheet">
+      <div class="modal__header">
+        <div><p class="eyebrow">Bijna geregeld</p><h2 id="confirm-title">Bestelling controleren</h2></div>
+        <button class="icon-button modal-close" type="button" aria-label="Sluiten" data-close-dialog="confirm-dialog">×</button>
+      </div>
+      <div class="modal__body">
+        <p class="modal-intro">WhatsApp opent met het bericht ingevuld. Tik daar zelf nog op <strong>Versturen</strong>.</p>
+        <pre class="message-preview" id="message-preview" tabindex="0"></pre>
+      </div>
+      <div class="modal__footer modal__footer--stack">
+        <button class="primary-button whatsapp-button" id="whatsapp-button" type="button"><span aria-hidden="true">💬</span> Open in WhatsApp</button>
+        <div class="button-row">
+          <button class="secondary-button" id="copy-order-button" type="button">Kopieer</button>
+          <button class="secondary-button" id="share-order-button" type="button">Deel</button>
+          <button class="secondary-button" type="button" data-close-dialog="confirm-dialog">Annuleer</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="history-dialog" aria-labelledby="history-title">
+    <div class="modal__sheet modal__sheet--large">
+      <div class="modal__header">
+        <div><p class="eyebrow">Alleen op dit apparaat</p><h2 id="history-title">Eerdere bestellingen</h2></div>
+        <button class="icon-button modal-close" type="button" aria-label="Sluiten" data-close-dialog="history-dialog">×</button>
+      </div>
+      <div class="modal__body">
+        <p class="modal-intro">Deze geschiedenis wordt uitsluitend lokaal in deze browser bewaard.</p>
+        <div class="history-list" id="history-list"></div>
+      </div>
+      <div class="modal__footer">
+        <button class="text-button text-button--danger" id="clear-history-button" type="button">Wis alle lokale geschiedenis</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="settings-dialog" aria-labelledby="settings-title">
+    <form class="modal__sheet modal__sheet--large" id="settings-form">
+      <div class="modal__header">
+        <div><p class="eyebrow">Gastheerinstellingen</p><h2 id="settings-title">Zolder Resort beheren</h2></div>
+        <button class="icon-button modal-close" type="button" aria-label="Sluiten" data-close-dialog="settings-dialog">×</button>
+      </div>
+      <div class="modal__body form-stack">
+        <label>Naam gastheer<input id="setting-host" name="host" type="text" autocomplete="name" maxlength="40" required></label>
+        <label>WhatsApp-nummer<input id="setting-phone" name="phone" type="text" inputmode="tel" autocomplete="tel" pattern="[0-9]{8,15}" maxlength="15" required><small>Alleen cijfers, inclusief landcode. Standaard: 31648203686.</small></label>
+        <label>Service-status<select id="setting-status" name="status"></select></label>
+        <label>Standaardprioriteit<select id="setting-priority" name="priority"></select></label>
+        <div class="toggle-row"><span><strong>Klikgeluid</strong><small>Standaard uit; nooit automatisch afgespeeld</small></span><label class="switch"><input id="setting-sound" type="checkbox"><span aria-hidden="true"></span><span class="sr-only">Klikgeluid aan of uit</span></label></div>
+        <div class="toggle-row"><span><strong>Trillingsfeedback</strong><small>Alleen als het apparaat dit ondersteunt</small></span><label class="switch"><input id="setting-vibration" type="checkbox"><span aria-hidden="true"></span><span class="sr-only">Trillingsfeedback aan of uit</span></label></div>
+        <label>Lokale gastheer-pincode<input id="setting-pin" name="pin" type="text" inputmode="numeric" pattern="[0-9]{4,8}" minlength="4" maxlength="8" required><small>Een visuele drempel, geen echte beveiliging. Standaard: 2026.</small></label>
+        <div class="settings-action-card"><span><strong>Bestelgeschiedenis</strong><small>Wis alleen de lokaal opgeslagen bestellingen en dashboardstatussen.</small></span><button class="secondary-button" id="settings-clear-history-button" type="button">Geschiedenis wissen</button></div>
+      </div>
+      <div class="modal__footer modal__footer--between">
+        <button class="text-button text-button--danger" id="app-reset-button" type="button">Reset hele app</button>
+        <button class="primary-button primary-button--compact" type="submit">Instellingen opslaan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="host-login-dialog" aria-labelledby="host-login-title">
+    <form class="modal__sheet modal__sheet--small" id="host-login-form">
+      <div class="modal__header">
+        <div><p class="eyebrow">Alleen voor Bram</p><h2 id="host-login-title">Gastheer-modus</h2></div>
+        <button class="icon-button modal-close" type="button" aria-label="Sluiten" data-close-dialog="host-login-dialog">×</button>
+      </div>
+      <div class="modal__body form-stack">
+        <p class="modal-intro">Voer de lokale pincode in om bestellingen op dit apparaat te beheren.</p>
+        <label>Pincode<input id="host-pin-input" type="password" inputmode="numeric" pattern="[0-9]{4,8}" autocomplete="current-password" required></label>
+        <p class="form-error" id="pin-error" role="alert" hidden>Die pincode klopt niet.</p>
+      </div>
+      <div class="modal__footer">
+        <button class="primary-button" type="submit">Open dashboard</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="modal" id="host-dialog" aria-labelledby="host-title">
+    <div class="modal__sheet modal__sheet--large">
+      <div class="modal__header">
+        <div><p class="eyebrow">Lokale gastheer-modus</p><h2 id="host-title">Bestellingendashboard</h2></div>
+        <button class="icon-button modal-close" type="button" aria-label="Sluiten" data-close-dialog="host-dialog">×</button>
+      </div>
+      <div class="modal__body">
+        <div class="dashboard-notice">Statuswijzigingen synchroniseren niet met andere apparaten, omdat deze app geen backend gebruikt.</div>
+        <label class="inline-field">Filter op status<select id="dashboard-filter"></select></label>
+        <div class="dashboard-list" id="dashboard-list"></div>
+      </div>
+      <div class="modal__footer">
+        <button class="text-button text-button--danger" id="dashboard-reset-button" type="button">Reset dashboard</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <noscript><div class="noscript">JavaScript is nodig om bestellingen samen te stellen. Je kunt Bram rechtstreeks bereiken via WhatsApp: +31 6 48203686.</div></noscript>
+  <script src="./app.js" defer></script>
+</body>
+</html>
